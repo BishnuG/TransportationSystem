@@ -12,8 +12,8 @@ public class TransportationSystemMain {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter type of vehicle: Bus, Truck, Taxi, etc.. ");
-        String typeOfVehicle = scanner.next();
+        System.out.println("Enter type of vehicle: 1 for Bus, 2 for Truck, 3 for Taxi, 4 for Scooty, 5 for Bike");
+        int typeOfVehicle = scanner.nextInt();
 
         System.out.println("Enter vehicle Id like B01 for Bus, BK01 for Bike... ");
         String vehicleId = scanner.next();
@@ -45,7 +45,7 @@ public class TransportationSystemMain {
         boolean data = transportationSystemService.isVehicleIdValid( vehicleId, typeOfVehicle);
 
         if(data){
-            ts.setTypeOfVehicle(typeOfVehicle);
+            ts.setTypeOfVehicle(transportationSystemService.selectedVehicleType(typeOfVehicle));
             ts.setVehicleId(vehicleId);
             ts.setMilageOfVehicle(milageOfVehicle);
             ts.setCustId(custId);
@@ -61,9 +61,8 @@ public class TransportationSystemMain {
                         ts.getCustId(), ts.getCustName(), ts.getMob(), ts.getEmail(), ts.getDrivingLicense(),
                         ts.getDurationForRent(), rate);
             }else{
-                System.out.println("Error occured while inserting data !!");
+                System.out.println("Error occured while passing data !!");
             }
-
 
         }else {
             System.out.println("Vehicle id is Invalid");

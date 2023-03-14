@@ -1,10 +1,10 @@
 package com.transportationsystem.service;
 
 public class TransportationSystemService {
-    public boolean isVehicleIdValid(String vehicleId, String typeOfVehicle ){
+    public boolean isVehicleIdValid(String vehicleId, int typeOfVehicle ){
         boolean flag = false;
 
-        char firstCharacterOfVehicle = typeOfVehicle.charAt(0);
+       /* char firstCharacterOfVehicle = typeOfVehicle.charAt(0);
         char firstCharacterOfVehicleId = vehicleId.charAt(0);
         String lastTwoChar = vehicleId.length() > 2 ? vehicleId.substring(vehicleId.length() - 2) : vehicleId;
 
@@ -13,11 +13,24 @@ public class TransportationSystemService {
 
         if(firstCharacterOfVehicle1.equals(firstCharacterOfVehicleId2) && islastTwoCharInteger(lastTwoChar)){
             flag = true;
+        }*/
+
+        if(typeOfVehicle == 1 && vehicleId.equals("B01")){
+            flag = true;
+        } else if (typeOfVehicle == 2 && vehicleId.equals("T01")) {
+            flag = true;
+        } else if (typeOfVehicle == 3 && vehicleId.equals("TX01")) {
+            flag = true;
+        } else if (typeOfVehicle == 4 && vehicleId.equals("SC01")) {
+            flag = true;
+        } else if (typeOfVehicle == 5 && vehicleId.equals("BK01")) {
+            flag = true;
         }
+
         return flag;
     }
 
-    public boolean islastTwoCharInteger(String lastTwoChar){
+    /*public boolean islastTwoCharInteger(String lastTwoChar){
         boolean isInteger = true;
 
         try {
@@ -27,7 +40,7 @@ public class TransportationSystemService {
         }
 
         return isInteger;
-    }
+    }*/
 
     public void bookingDetails(String typeOfVehicle, String vehicleId, int milageOfVehicle, int custId, String custName,
         long mob, String email, String drivingLisence, float durationOfRent, float rate){
@@ -62,6 +75,31 @@ public class TransportationSystemService {
         }
         return rate;
 
+    }
+
+    public String selectedVehicleType(int data){
+        String vehicle = "";
+        switch (data){
+            case 1:
+                vehicle = "Bus";
+                break;
+            case 2:
+                vehicle = "Truck";
+                break;
+            case 3:
+                vehicle = "Taxi";
+                break;
+
+            case 4:
+                vehicle = "Scooty";
+                break;
+
+            case 5:
+                vehicle = "Bike";
+                break;
+
+        }
+        return vehicle;
     }
 
 }
